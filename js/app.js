@@ -34,7 +34,7 @@ navDots.forEach(dot => {
 
 
 /* ---------------------------------------------------------
-   2. ENVELOPE — hover on desktop, tap/click on touch
+   2. ENVELOPE — click/tap to open
 --------------------------------------------------------- */
 const waxSeal = document.getElementById('waxSeal');
 const envelopeWrap = document.getElementById('envelopeWrap');
@@ -48,18 +48,24 @@ function openEnvelope() {
   envelopeWrap.classList.add('hidden');
   letterCard.classList.remove('hidden');
 
-  envelopeHint.textContent = 'to: Andy';
+  // Completely remove the "yoohoo open up" hint once opened.
+  envelopeHint.classList.add('hidden');
+
   envelopeContinue.classList.remove('hidden');
 
-  // Recalculate decorative positions now that the letter
-  // is larger than the original envelope.
+  // The letter is much larger than the envelope,
+  // so recalculate decorative positions.
   requestAnimationFrame(() => {
     renderDecor('envelope');
   });
 }
 
 // Click/tap works on both desktop and mobile.
-waxSeal.addEventListener('click', openEnvelope);
+// There is intentionally NO hover behavior.
+if (waxSeal) {
+  waxSeal.addEventListener('click', openEnvelope);
+}
+
 
 /* ---------------------------------------------------------
    3. GALLERY — click/tap a photo to reveal its memory
@@ -137,14 +143,6 @@ const pokemonRoster = [
    5. DECOR
 --------------------------------------------------------- */
 
-/*
-  Desktop:
-    Bigger icons and lots of scattered decorations.
-
-  Mobile:
-    Smaller icons and fewer decorations so the page
-    doesn't look crowded.
-*/
 const decorLayer = document.getElementById('decorLayer');
 
 const DECOR_SIZE_DESKTOP = 30;
@@ -211,12 +209,12 @@ function rectsOverlap(a, b, margin = 0) {
 /*
   Find a location for a decorative item.
 
-  On desktop:
-    Random locations are used.
+  Desktop:
+    Random locations.
 
-  On mobile:
-    Icons are placed around the edges/corners instead of
-    randomly filling the tiny amount of space around the card.
+  Mobile:
+    Deliberate edge/corner locations so the decorations
+    don't crowd the card.
 */
 function findDecorSpot(cardRect, size, usedRects, mobile) {
   const vw = window.innerWidth;
@@ -227,12 +225,6 @@ function findDecorSpot(cardRect, size, usedRects, mobile) {
   const candidates = [];
 
   if (mobile) {
-    /*
-      Deliberate edge positions.
-
-      This gives the phone layout a little decoration without
-      creating a wall of icons around the card.
-    */
     const edge = 8;
     const midY = vh * 0.5;
 
@@ -270,10 +262,7 @@ function findDecorSpot(cardRect, size, usedRects, mobile) {
 
   } else {
 
-    /*
-      Desktop has plenty of room, so keep the randomized
-      scattered look.
-    */
+    // Desktop has plenty of room, so keep the scattered look.
     for (let attempt = 0; attempt < 80; attempt++) {
       candidates.push([
         Math.random() * Math.max(vw - size, 0),
@@ -283,12 +272,6 @@ function findDecorSpot(cardRect, size, usedRects, mobile) {
   }
 
 
-  /*
-    Test each candidate until we find one that:
-
-    1. Doesn't overlap the card.
-    2. Doesn't overlap another decorative item.
-  */
   for (const [x, y] of candidates) {
 
     const candidate = {
@@ -298,12 +281,12 @@ function findDecorSpot(cardRect, size, usedRects, mobile) {
       bottom: y + size
     };
 
-    // Keep the decoration away from the card.
+    // Don't overlap the main card.
     if (rectsOverlap(candidate, cardRect, safe)) {
       continue;
     }
 
-    // Keep decorative items from piling on top of each other.
+    // Don't pile decorations on top of each other.
     if (
       usedRects.some(r =>
         rectsOverlap(
@@ -323,20 +306,19 @@ function findDecorSpot(cardRect, size, usedRects, mobile) {
     };
   }
 
-  // No safe location found.
   return null;
 }
 
 
 /*
-  Render all decorations for the current screen.
+  Render decorations for the current screen.
 */
 function renderDecor(themeId) {
 
   // Remove decorations from the previous screen.
   decorLayer.innerHTML = '';
 
-  // Home intentionally has no floating decorations.
+  // Home has no floating decorations.
   if (themeId === 'home') return;
 
 
@@ -371,10 +353,7 @@ function renderDecor(themeId) {
     : (POKEMON_COUNT_BY_THEME[themeId] || 0);
 
 
-  /*
-    Keep track of where we've already placed things.
-    This prevents decorations from stacking together.
-  */
+  // Keep track of already-used positions.
   const usedRects = [];
 
 
@@ -398,7 +377,6 @@ function renderDecor(themeId) {
     );
 
 
-    // If there's no safe space, skip this icon.
     if (!spot) continue;
 
 
@@ -429,9 +407,6 @@ function renderDecor(themeId) {
     svg.classList.add('decor-icon');
 
 
-    /*
-      The cloud has a wider viewBox than the other icons.
-    */
     svg.setAttribute(
       'viewBox',
       iconId === 'px-cloud'
@@ -491,7 +466,6 @@ function renderDecor(themeId) {
       );
 
 
-      // No safe space available.
       if (!spot) continue;
 
 
@@ -530,10 +504,6 @@ function renderDecor(themeId) {
         `-${Math.random() * 0.3}s`;
 
 
-      /*
-        If a Pokémon image fails to load,
-        just remove it rather than showing a broken image.
-      */
       img.onerror = () => {
         img.remove();
       };
@@ -551,10 +521,6 @@ function renderDecor(themeId) {
    6. RESIZE HANDLING
 --------------------------------------------------------- */
 
-/*
-  Don't re-render dozens of times while someone is actively
-  resizing the browser window.
-*/
 let resizeTimer;
 
 window.addEventListener('resize', () => {
