@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>happy birthday :)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" href="img/icon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============ SVG SPRITE SHEET ============
+     Original hand-drawn pixel icons, each with its own baked-in color
+     palette (not currentColor) so they read as full-color icons wherever
+     they're used, instead of being recolored to a single muted tone. -->
+<svg style="display:none">
+  <symbol id="px-heart" viewBox="0 0 16 16" shape-rendering="crispEdges">
+    <path fill="#8a1c2b" d="M4 2h2v1H4zM10 2h2v1h-2zM3 3h4v1H3zM9 3h4v1H9zM2 4h12v1H2zM2 5h12v1H2zM2 6h12v1H2zM3 7h10v1H3zM4 8h8v1H4zM5 9h6v1H5zM6 10h4v1H6zM7 11h2v1H7z"/>
+    <path fill="#ef4550" d="M4 3h2v1H4zM10 3h2v1h-2zM3 4h10v1H3zM3 5h10v1H3zM3 6h10v1H3zM4 7h8v1H4zM5 8h6v1H5zM6 9h4v1H6zM7 10h2v1H7z"/>
+    <path fill="#ffc2c8" d="M4 4h2v2H4z"/>
+  </symbol>
+  <symbol id="px-sparkle" viewBox="0 0 16 16" shape-rendering="crispEdges">
+    <path fill="#a685e3" d="M7 0h2v4H7zM7 12h2v4H7zM0 7h4v2H0zM12 7h4v2h-4zM3 3h1v1H3zM12 3h1v1h-1zM3 12h1v1H3zM12 12h1v1h-1z"/>
+  </symbol>
+  <symbol id="px-mushroom" viewBox="0 0 16 16" shape-rendering="crispEdges">
+    <path fill="#b23a48" d="M4 3h8v2H4zM2 5h12v3H2z"/>
+    <path fill="#ffffff" d="M4 5h1v1H4zM8 5h1v1H8zM11 5h1v1h-1z"/>
+    <path fill="#f0dfc0" d="M5 8h6v3H5zM5 11h6v2H5z"/>
+  </symbol>
+  <symbol id="px-cloud" viewBox="0 0 24 16" shape-rendering="crispEdges">
+    <path fill="#8fc6f0" d="M4 8h2v2H4zM18 8h2v2h-2zM6 6h4v2H6zM14 6h4v2h-4zM8 4h8v2H8zM2 10h20v2H2zM4 12h16v1H4z"/>
+    <path fill="#e8f6ff" d="M6 8h2v2H6zM16 8h2v2h-2zM8 6h2v2H8zM12 6h2v2h-2zM3 10h4v1H3z"/>
+  </symbol>
+  <symbol id="px-cake" viewBox="0 0 16 16" shape-rendering="crispEdges">
+    <path fill="#ffb703" d="M7 0h2v2H7z"/>
+    <path fill="#f2c4c8" d="M7 2h2v3H7z"/>
+    <path fill="#fffaf7" d="M2 8h12v3H2z"/>
+    <path fill="#e8a0a5" d="M2 10h12v5H2z"/>
+    <path fill="#b23a48" d="M2 10h12v1H2z"/>
+  </symbol>
+  <symbol id="px-gem" viewBox="0 0 16 16" shape-rendering="crispEdges">
+    <path fill="#1f8a94" d="M6 2h4v1H6zM4 3h8v1H4zM3 4h10v2H3zM4 6h8v1H4zM5 7h6v1H5zM6 8h4v1H6zM7 9h2v1H7z"/>
+    <path fill="#42c9d6" d="M6 3h4v1H6zM4 4h8v2H4zM5 6h6v1H5zM6 7h4v1H6zM7 8h2v1H7z"/>
+    <path fill="#e9fbfd" d="M5 4h2v1H5z"/>
+  </symbol>
+  <symbol id="px-record" viewBox="0 0 16 16" shape-rendering="crispEdges">
+    <path fill="#15151c" d="M6 2h4v1H6zM4 3h8v1H4zM2 4h12v8H2zM4 12h8v1H4zM6 13h4v1H6z"/>
+    <path fill="#34343f" d="M4 5h1v1H4zM11 5h1v1h-1zM3 7h1v1H3zM12 7h1v1h-1zM4 10h1v1H4zM11 10h1v1h-1zM6 4h1v1H6zM9 4h1v1H9zM6 11h1v1H6zM9 11h1v1H9z"/>
+    <path fill="#e2607a" d="M6 7h4v3H6z"/>
+    <path fill="#0a0a0d" d="M7 8h2v1H7z"/>
+  </symbol>
+  <symbol id="px-note" viewBox="0 0 16 16" shape-rendering="crispEdges">
+    <path fill="#3b4a5a" d="M6 1h2v10H6zM6 1h4v1H6zM8 1h3v2H8zM9 3h2v2H9zM3 10h3v1H3zM2 11h5v3H2zM3 14h3v1H3z"/>
+    <path fill="#5b6b7d" d="M3 12h2v1H3z"/>
+  </symbol>
+</svg>
+
+<!-- ============ FLOATING DECOR LAYER (per-theme, purely decorative) ============ -->
+<div class="decor-layer" aria-hidden="true" id="decorLayer"></div>
+
+<div id="app" data-active="home">
+
+  <!-- ======================= NAV DOTS ======================= -->
+  <nav class="screen-nav" aria-label="site sections">
+    <button class="nav-dot" data-target="home" aria-label="Home"></button>
+    <button class="nav-dot" data-target="envelope" aria-label="Envelope"></button>
+    <button class="nav-dot" data-target="gallery" aria-label="Gallery"></button>
+    <button class="nav-dot" data-target="finale" aria-label="Finale"></button>
+  </nav>
+
+  <!-- ======================= HOME ======================= -->
+  <section class="screen" id="home" data-theme="home">
+    <!-- Decorative "print statement" wallpaper, one per language, kept faint
+         so it doesn't compete with the card in front of it. -->
+    <div class="code-bg" aria-hidden="true">
+      <span class="code-line" style="top:6%; left:4%; transform:rotate(-4deg);">print("Happy 21st!")</span>
+      <span class="code-line" style="top:14%; left:62%; transform:rotate(3deg);">System.out.println("Happy 21st!");</span>
+      <span class="code-line" style="top:24%; left:2%; transform:rotate(2deg);">console.log("Happy 21st!");</span>
+      <span class="code-line" style="top:8%; left:34%; transform:rotate(-2deg);">std::cout &lt;&lt; "Happy 21st!";</span>
+      <span class="code-line" style="top:34%; left:70%; transform:rotate(-3deg);">printf("Happy 21st!\n");</span>
+      <span class="code-line" style="top:46%; left:6%; transform:rotate(4deg);">puts "Happy 21st!"</span>
+      <span class="code-line" style="top:60%; left:60%; transform:rotate(2deg);">fmt.Println("Happy 21st!")</span>
+      <span class="code-line" style="top:66%; left:8%; transform:rotate(-3deg);">println!("Happy 21st!");</span>
+      <span class="code-line" style="top:78%; left:36%; transform:rotate(3deg);">echo "Happy 21st!";</span>
+      <span class="code-line" style="top:84%; left:64%; transform:rotate(-2deg);">Console.WriteLine("Happy 21st!");</span>
+      <span class="code-line" style="top:90%; left:4%; transform:rotate(2deg);">print('Happy 21st!');</span>
+      <span class="code-line" style="top:2%; left:80%; transform:rotate(-3deg);">println("Happy 21st!")</span>
+      <span class="code-line" style="top:52%; left:32%; transform:rotate(-4deg);">SELECT 'Happy 21st!';</span>
+      <span class="code-line" style="top:38%; left:44%; transform:rotate(1deg);">echo "Happy 21st!"</span>
+    </div>
+
+    <div class="pixel-frame home-hero">
+      <p class="eyebrow">a little something for</p>
+      <h1 class="pixel-title glitch-in">ANDY</h1>
+      <p class="subtitle">click to proceed &darr;</p>
+
+      <div class="avatar-row">
+        <img class="chibi" src="img/dana.png" alt="Dana chibi avatar">
+        <svg class="px-icon heart-mid" viewBox="0 0 16 16"><use href="#px-heart"/></svg>
+        <img class="chibi" src="img/andy.png" alt="Andy chibi avatar">
+      </div>
+
+      <button class="pixel-btn start-btn" data-goto="envelope">
+        OPEN
+      </button>
+    </div>
+  </section>
+
+  <!-- ======================= ENVELOPE MINIGAME ======================= -->
+  <section class="screen" id="envelope" data-theme="envelope">
+    <div class="pixel-frame envelope-stage">
+      <h2 class="pixel-title small">you've got mail</h2>
+      <p class="subtitle" id="envelopeHint">yoohoo open up</p>
+
+      <div class="envelope-wrap" id="envelopeWrap">
+        <div class="envelope-body">
+          <div class="envelope-flap"></div>
+          <button class="wax-seal" id="waxSeal" aria-label="Open the letter">
+            <svg class="px-icon seal-heart" viewBox="0 0 16 16"><use href="#px-heart"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ✏️ EDIT ME: this is the actual letter. Replace the two lines
+           below with your own message — plain text is fine, and so are
+           basic tags like <strong>, <em>, <br>. Add more <p class="letter-line">
+           lines if you want it longer. -->
+      <div class="letter-card hidden" id="letterCard">
+        <p class="letter-line">happy 21st cutie, i made this little site for you because i truly love you. theres nobody else i would rather spend my time with than you, my heart. you are the light of my life, and you mean the world to me. i love you the most. from exploring abandoned buildings, hiking, eating, listening to music, and opening pokemon - we could never be bored with each other. thank you so much for being there for me whenever. i got your back forever.</p>
+        <p class="letter-line">keep moving through the site :p</p>
+      </div>
+
+      <button class="pixel-btn continue-btn hidden" id="envelopeContinue" data-goto="gallery">
+        continue &rarr;
+      </button>
+    </div>
+  </section>
+
+  <!-- ======================= GALLERY ======================= -->
+  <section class="screen" id="gallery" data-theme="gallery">
+    <div class="pixel-frame gallery-stage">
+      <h2 class="pixel-title small">andy + dana gallery</h2>
+      <p class="subtitle">tap a photo</p>
+
+      <div class="gallery-grid" id="galleryGrid">
+        <!-- Each .gallery-item is a placeholder: swap data-src / data-caption
+             and the img src for your real photos + memories. -->
+        <button class="gallery-item" data-caption="weyerhaeuser was so beautiful! i love exploring new places with you.">
+          <img src="img/mem1.png" alt="memory 1">
+          <span class="frame-corner tl"></span><span class="frame-corner br"></span>
+        </button>
+        <button class="gallery-item" data-caption="thrifting with you is SO much fun. i love your sense of style Andy :D you are always so well dressed!">
+          <img src="img/mem2.png" alt="memory 2">
+          <span class="frame-corner tl"></span><span class="frame-corner br"></span>
+        </button>
+        <button class="gallery-item" data-caption="our countlessss sleepovers hehe">
+          <img src="img/mem3.png" alt="memory 3">
+          <span class="frame-corner tl"></span><span class="frame-corner br"></span>
+        </button>
+        <button class="gallery-item" data-caption="MY BIRTHDAY!!! you are so kind and SO thoughtful baby">
+          <img src="img/mem4.png" alt="memory 4">
+          <span class="frame-corner tl"></span><span class="frame-corner br"></span>
+        </button>
+        <button class="gallery-item" data-caption="yummy food with my husband is the highlight of my day">
+          <img src="img/mem5.png" alt="memory 5">
+          <span class="frame-corner tl"></span><span class="frame-corner br"></span>
+        </button>
+        <button class="gallery-item" data-caption="we are so silly together, i can be MYSELF with you!">
+          <img src="img/mem6.png" alt="memory 6">
+          <span class="frame-corner tl"></span><span class="frame-corner br"></span>
+        </button>
+      </div>
+
+      <button class="pixel-btn continue-btn" data-goto="finale">continue &rarr;</button>
+    </div>
+
+    <!-- Reveal modal for gallery captions -->
+    <div class="gallery-modal" id="galleryModal">
+      <div class="gallery-modal-card">
+        <img id="modalImg" src="" alt="">
+        <p id="modalCaption"></p>
+        <button class="pixel-btn tiny" id="modalClose">close</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= FINALE ======================= -->
+  <section class="screen" id="finale" data-theme="finale">
+    <div class="pixel-frame finale-stage">
+      <h2 class="pixel-title small rainbow-text">the end</h2>
+
+      <div class="hold-hands-stage" id="holdHandsStage">
+        <img class="chibi walk-in from-left" src="img/dana.png" alt="Dana chibi avatar">
+        <svg class="px-icon heart-mid pulse" viewBox="0 0 16 16"><use href="#px-heart"/></svg>
+        <img class="chibi walk-in from-right" src="img/andy.png" alt="Andy chibi avatar">
+      </div>
+
+      <p class="finale-msg">
+        happy birthday anderdingus! i <3 u. we are forever
+      </p>
+    </div>
+  </section>
+
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
