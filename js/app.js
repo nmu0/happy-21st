@@ -51,35 +51,15 @@ function openEnvelope() {
   envelopeHint.textContent = 'to: Andy';
   envelopeContinue.classList.remove('hidden');
 
-  // The letter is much larger than the envelope,
-  // so recalculate the decorative icon positions.
+  // Recalculate decorative positions now that the letter
+  // is larger than the original envelope.
   requestAnimationFrame(() => {
     renderDecor('envelope');
   });
 }
 
-/*
-  Desktop:
-    Hovering over the wax seal opens the letter.
-
-  Phone/tablet:
-    Tapping the wax seal opens the letter.
-
-  The hover check prevents hover-only behavior from
-  being attached on devices that don't actually support hover.
-*/
-if (waxSeal) {
-  // Works on phones and desktop clicks.
-  waxSeal.addEventListener('click', openEnvelope);
-
-  // Only add hover behavior to devices with real mouse hover.
-  if (
-    window.matchMedia('(hover: hover) and (pointer: fine)').matches
-  ) {
-    waxSeal.addEventListener('mouseenter', openEnvelope);
-  }
-}
-
+// Click/tap works on both desktop and mobile.
+waxSeal.addEventListener('click', openEnvelope);
 
 /* ---------------------------------------------------------
    3. GALLERY — click/tap a photo to reveal its memory
